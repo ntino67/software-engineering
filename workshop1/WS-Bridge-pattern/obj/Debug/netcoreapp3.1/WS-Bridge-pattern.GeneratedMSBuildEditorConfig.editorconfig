@@ -1,0 +1,8 @@
+is_global = true
+build_property.RootNamespace = WS_Bridge_pattern
+build_property.ProjectDir = C:\Users\matte\Documents\Obsidian Vault\01 - Projects\Software-engineering\WS-Bridge-pattern\WS-Bridge-pattern\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 
