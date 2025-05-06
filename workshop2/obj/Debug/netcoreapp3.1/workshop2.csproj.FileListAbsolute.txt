@@ -1,0 +1,14 @@
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\bin\Debug\netcoreapp3.1\workshop2.exe
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\bin\Debug\netcoreapp3.1\workshop2.deps.json
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\bin\Debug\netcoreapp3.1\workshop2.runtimeconfig.json
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\bin\Debug\netcoreapp3.1\workshop2.runtimeconfig.dev.json
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\bin\Debug\netcoreapp3.1\workshop2.dll
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\bin\Debug\netcoreapp3.1\workshop2.pdb
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\obj\Debug\netcoreapp3.1\workshop2.GeneratedMSBuildEditorConfig.editorconfig
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\obj\Debug\netcoreapp3.1\workshop2.AssemblyInfoInputs.cache
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\obj\Debug\netcoreapp3.1\workshop2.AssemblyInfo.cs
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\obj\Debug\netcoreapp3.1\workshop2.csproj.CoreCompileInputs.cache
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\obj\Debug\netcoreapp3.1\workshop2.sourcelink.json
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\obj\Debug\netcoreapp3.1\workshop2.dll
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\obj\Debug\netcoreapp3.1\workshop2.pdb
+\\wsl.localhost\Ubuntu\home\ntino67\workspace\cesi\software-engineering\workshop2\obj\Debug\netcoreapp3.1\workshop2.genruntimeconfig.cache
