@@ -1,51 +1,53 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 
 class Program
 {
     static void Main()
     {
-        OpenDirectoryWithVerb(@"C:\Windows", "explore");
-        OpenFileWithVerb(@"C:\Windows\win.ini", "edit");  // or "open" if edit isn't registered
+        LaunchWithMonitoring("mspaint.exe");
     }
 
-    static void OpenDirectoryWithVerb(string path, string verb)
+    static void LaunchWithMonitoring(string processName)
     {
         try
         {
-            var psi = new ProcessStartInfo
+            var process = new Process
             {
-                FileName = path,
-                Verb = verb,
-                UseShellExecute = true
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = processName,
+                    UseShellExecute = true
+                },
+                EnableRaisingEvents = true // Needed to use Exited event
             };
 
-            Process.Start(psi);
-            Console.WriteLine($"Used verb '{verb}' on directory: {path}");
+            process.Exited += (sender, e) =>
+            {
+                Console.WriteLine($"[Event] Process {processName} has exited (event triggered).");
+            };
+
+            process.Start();
+
+            Console.WriteLine($"{process.ProcessName} process no. {process.Id} is launched.");
+
+            Thread.Sleep(2000); // Simulate doing other stuff...
+
+            if (process.HasExited)
+            {
+                Console.WriteLine($"Process {processName} has already exited.");
+            }
+            else
+            {
+                Console.WriteLine($"Process {processName} is still running. Waiting for it to exit...");
+                process.WaitForExit(); // Wait if still running
+                Console.WriteLine($"Process {processName} has now exited.");
+            }
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Failed to {verb} directory {path}: {ex.Message}");
-        }
-    }
-
-    static void OpenFileWithVerb(string filePath, string verb)
-    {
-        try
-        {
-            var psi = new ProcessStartInfo
-            {
-                FileName = filePath,
-                Verb = verb,
-                UseShellExecute = true
-            };
-
-            Process.Start(psi);
-            Console.WriteLine($"Used verb '{verb}' on file: {filePath}");
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Failed to {verb} file {filePath}: {ex.Message}");
+            Console.WriteLine($"Error launching {processName}: {ex.Message}");
         }
     }
 }
