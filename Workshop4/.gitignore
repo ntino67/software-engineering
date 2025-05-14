@@ -1,0 +1,14 @@
+# Ignore build output directories
+bin/
+obj/
+
+# Optional: Ignore user-specific files (if using Visual Studio)
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Optional: Ignore Rider IDE files
+.idea/
+*.sln.iml
+

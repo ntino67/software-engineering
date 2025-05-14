@@ -1,0 +1,14 @@
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/bin/Debug/net7.0/Workshop4
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/bin/Debug/net7.0/Workshop4.deps.json
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/bin/Debug/net7.0/Workshop4.runtimeconfig.json
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/bin/Debug/net7.0/Workshop4.dll
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/bin/Debug/net7.0/Workshop4.pdb
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/obj/Debug/net7.0/Workshop4.GeneratedMSBuildEditorConfig.editorconfig
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/obj/Debug/net7.0/Workshop4.AssemblyInfoInputs.cache
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/obj/Debug/net7.0/Workshop4.AssemblyInfo.cs
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/obj/Debug/net7.0/Workshop4.csproj.CoreCompileInputs.cache
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/obj/Debug/net7.0/Workshop4.dll
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/obj/Debug/net7.0/refint/Workshop4.dll
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/obj/Debug/net7.0/Workshop4.pdb
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/obj/Debug/net7.0/Workshop4.genruntimeconfig.cache
+/home/ntino67/workspace/cesi/software-engineering/Workshop4/obj/Debug/net7.0/ref/Workshop4.dll
