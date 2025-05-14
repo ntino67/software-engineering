@@ -70,5 +70,27 @@ namespace ProcessManager
             string[] critical = { "System", "wininit", "csrss", "lsass", "winlogon", "services", "smss" };
             return critical.Contains(p.ProcessName, StringComparer.OrdinalIgnoreCase);
         }
+
+        private void LaunchProcess_Click(object sender, RoutedEventArgs e)
+        {
+            string input = ProcessInput.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(input))
+            {
+                MessageBox.Show("Veuillez saisir un nom de processus.");
+                return;
+            }
+
+            try
+            {
+                var process = Process.Start(input);
+                MessageBox.Show($"Processus '{input}' lancé avec succès. (PID: {process?.Id})");
+                LoadProcesses();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors du lancement : {ex.Message}");
+            }
+        }
     }
 }
