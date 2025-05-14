@@ -13,19 +13,15 @@ class Program
     {
         try
         {
-            var psi = new ProcessStartInfo
+            Process? process = Process.Start(processName);
+            if (process != null)
             {
-                FileName = "/mnt/c/Windows/System32/cmd.exe",
-                Arguments = $"/c start {processName}",
-                RedirectStandardOutput = false,
-                RedirectStandardError = false,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-
-            var process = Process.Start(psi);
-
-            Console.WriteLine($"{processName} is launched from WSL (via cmd).");
+                Console.WriteLine($"{process.ProcessName} process no. {process.Id} is launched.");
+            }
+            else
+            {
+                Console.WriteLine($"Failed to launch {processName}.");
+            }
         }
         catch (Exception ex)
         {
