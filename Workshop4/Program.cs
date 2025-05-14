@@ -1,60 +1,51 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
-using System.Threading;
 
 class Program
 {
     static void Main()
     {
-        LaunchAndWait("explorer.exe", @"C:\Windows");
-        Thread.Sleep(2000);
-
-        string filePath = @"C:\Temp\example.txt";
-        CreateTextFile(filePath);
-        LaunchAndWait("notepad.exe", filePath);
-        Thread.Sleep(2000);
+        OpenDirectoryWithVerb(@"C:\Windows", "explore");
+        OpenFileWithVerb(@"C:\Windows\win.ini", "edit");  // or "open" if edit isn't registered
     }
 
-    static void LaunchAndWait(string processName, string arguments = "")
+    static void OpenDirectoryWithVerb(string path, string verb)
     {
         try
         {
             var psi = new ProcessStartInfo
             {
-                FileName = processName,
-                Arguments = arguments,
+                FileName = path,
+                Verb = verb,
                 UseShellExecute = true
             };
 
-            var process = Process.Start(psi);
-
-            if (process != null)
-            {
-                Console.WriteLine($"{process.ProcessName} process no. {process.Id} is launched.");
-                process.WaitForExit();
-                Console.WriteLine($"{process.ProcessName} has exited.");
-            }
-            else
-            {
-                Console.WriteLine($"Failed to launch {processName}.");
-            }
+            Process.Start(psi);
+            Console.WriteLine($"Used verb '{verb}' on directory: {path}");
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error launching {processName}: {ex.Message}");
+            Console.WriteLine($"Failed to {verb} directory {path}: {ex.Message}");
         }
     }
 
-    static void CreateTextFile(string path)
+    static void OpenFileWithVerb(string filePath, string verb)
     {
-        string? directory = Path.GetDirectoryName(path);
-        if (!Directory.Exists(directory))
+        try
         {
-            Directory.CreateDirectory(directory!);
-        }
+            var psi = new ProcessStartInfo
+            {
+                FileName = filePath,
+                Verb = verb,
+                UseShellExecute = true
+            };
 
-        File.WriteAllText(path, "This is an example file created by Workshop4.");
-        Console.WriteLine($"Created text file at: {path}");
+            Process.Start(psi);
+            Console.WriteLine($"Used verb '{verb}' on file: {filePath}");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Failed to {verb} file {filePath}: {ex.Message}");
+        }
     }
 }
