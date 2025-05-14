@@ -1,15 +1,19 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Threading;
 
 class Program
 {
     static void Main()
     {
-        LaunchAndNotify("mspaint");
-        LaunchAndNotify("notepad");
+        LaunchAndWait("explorer.exe");
+        Thread.Sleep(2000); // wait 2 seconds before continuing
+
+        LaunchAndWait("mspaint.exe");
+        Thread.Sleep(2000); // again, for demonstration
     }
 
-    static void LaunchAndNotify(string processName)
+    static void LaunchAndWait(string processName)
     {
         try
         {
@@ -17,6 +21,8 @@ class Program
             if (process != null)
             {
                 Console.WriteLine($"{process.ProcessName} process no. {process.Id} is launched.");
+                process.WaitForExit(); // parent waits here
+                Console.WriteLine($"{process.ProcessName} has exited.");
             }
             else
             {
