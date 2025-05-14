@@ -1,13 +1,35 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 class Program
 {
     static void Main()
     {
-        Process process = new Process();
-        process.StartInfo.FileName = "notepad.exe";
-        process.Start();
+        LaunchAndNotify("mspaint");
+        LaunchAndNotify("notepad");
+    }
 
-        Console.WriteLine("Notepad launched");
+    static void LaunchAndNotify(string processName)
+    {
+        try
+        {
+            var psi = new ProcessStartInfo
+            {
+                FileName = "/mnt/c/Windows/System32/cmd.exe",
+                Arguments = $"/c start {processName}",
+                RedirectStandardOutput = false,
+                RedirectStandardError = false,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+
+            var process = Process.Start(psi);
+
+            Console.WriteLine($"{processName} is launched from WSL (via cmd).");
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error launching {processName}: {ex.Message}");
+        }
     }
 }
