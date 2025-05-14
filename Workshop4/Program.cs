@@ -1,53 +1,23 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading;
 
 class Program
 {
     static void Main()
     {
-        LaunchWithMonitoring("mspaint.exe");
-    }
+        Console.WriteLine("PID\tName\t\tPriority\tMemory (MB)\tResponding");
 
-    static void LaunchWithMonitoring(string processName)
-    {
-        try
+        foreach (var process in Process.GetProcesses())
         {
-            var process = new Process
+            try
             {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = processName,
-                    UseShellExecute = true
-                },
-                EnableRaisingEvents = true // Needed to use Exited event
-            };
-
-            process.Exited += (sender, e) =>
-            {
-                Console.WriteLine($"[Event] Process {processName} has exited (event triggered).");
-            };
-
-            process.Start();
-
-            Console.WriteLine($"{process.ProcessName} process no. {process.Id} is launched.");
-
-            Thread.Sleep(2000); // Simulate doing other stuff...
-
-            if (process.HasExited)
-            {
-                Console.WriteLine($"Process {processName} has already exited.");
+                Console.WriteLine($"{process.Id}\t{process.ProcessName,-16}\t{process.BasePriority}\t\t{process.VirtualMemorySize64 / (1024 * 1024)}\t\t{process.Responding}");
             }
-            else
+            catch
             {
-                Console.WriteLine($"Process {processName} is still running. Waiting for it to exit...");
-                process.WaitForExit(); // Wait if still running
-                Console.WriteLine($"Process {processName} has now exited.");
+                // Some processes may be inaccessible (e.g., system-level)
+                Console.WriteLine($"Access denied to process {process.Id}");
             }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error launching {processName}: {ex.Message}");
         }
     }
 }
